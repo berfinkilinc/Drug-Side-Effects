@@ -1,0 +1,33 @@
+Berfin Kılınç/ berfin1klnc@gmail.com
+
+DRUG SIDE EFFECTS DATA DOCUMENTATİON
+
+DATASET OVERVİEW
+
+1- The Drug Side Effects dataset has 19 columns and a total of 2357 rows. It mainly consists of categorical data such as gender, location, drug names, and allergy or disease history. There are also numerical values like height, weight, and dates. 
+
+2- The categorical columns have a wide range of values, for example, there are 151 different drug names, 11 chronic diseases, 28 types of allergies, and 22 side effects. Each row does not represent a unique individual; there are only 196 different people in total. Each row is structured based on the drugs used by the individuals.
+
+3- There are missing values, particularly for gender, with 778 entries missing. Since this number is higher than the total rows labeled as 'Male,' gender may not play a significant role in the analysis.
+
+4- Besides gender, there are 100-500 missing entries for allergies, chronic diseases, blood type, weight, and height. In the chronic diseases columns, each person may have more than one chronic disease, meaning individuals can have multiple conditions. 
+
+5- Looking at the overall age distribution, it is difficult to identify a clear pattern, but there are noticeable increases in the 20-30, 45-55, 60, and 80 age groups. As for the 151 drugs, the number of entries per drug ranges from 29 to 7, showing a gradual decrease. The side effects range from 229 to 55 entries.
+
+PRE-PROCESSING THE DATASET
+
+Noticing the importance of individual characteristics in this dataset, I observed the lack of certain essential features. Through my research, I discovered that drug side effects can be influenced by multiple variables. For example, although blood type might seem like a minor detail, the presence of different antibodies in each blood type can affect how individuals experience side effects from medications. Similarly, age plays a significant role in drug variety since certain medications may not be suitable for specific age groups. As metabolism and bodily systems change across age ranges, the effects of drugs on the body also vary. With these variables in mind, I applied some preprocessing steps:
+
+1- First, as mentioned earlier, I extracted the age data from the date-related information, which I found to be useful. I also calculated how long it would take for the medications to cause side effects.
+
+2- I used height and weight data to calculate the Body Mass Index (BMI).
+
+3- There were many missing values in the dataset. For certain variables like allergies, diseases, and side effects, I considered them to be more individual-specific and thought that imputing these values could lead to biased predictions in any model. Therefore, I decided to mark them as 'Unknown'.
+
+4- Since features like gender, age, height, and weight could be interdependent, I chose to use a method called KNNImputer to predict missing values based on non-missing neighboring data.
+
+5- To prepare the data for any modeling process, all features need to be in numerical form, so it was necessary to encode the categorical variables. For this, I opted to combine several encoding methods, such as label, binary, and one-hot encoding. Some features required this kind of differentiation. By applying binary encoding to some columns, I managed to reduce the potential number of columns from around 240 to 93, which I believe will lead to a more efficient computational process.
+
+6- In the final stage, I applied PCA to a dataset with 93 columns. I was able to determine the appropriate number of components using a graph. Ultimately, I prepared my data for the model using 64 components.
+
+
